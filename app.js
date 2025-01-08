@@ -7,6 +7,9 @@ const app=express();
 const mongoose=require('mongoose');
 // const Mongo_url='mongodb://127.0.0.1:27017/wanderlust';
 const dbUrl=process.env.ATLASDB_URL;
+if (!dbUrl) {
+    throw new Error("MongoDB URL is not defined in the environment variables.");
+  }
 let methodOverride=require("method-override");   
 const path=require("path");
 const ejsMate=require("ejs-mate");
@@ -29,11 +32,11 @@ const store=MongoStore.create({
     crypto:{
         secret:process.env.SECRET,
     },
-    touchAfter:24*36,
+    touchAfter:24*3600,
 });
-store.on("error",()=>{
-    console.log("Error in Mongo session store",err);
-})
+store.on("error", (err) => {
+    console.error("Error in Mongo session store", err);
+  });
 
 
 
@@ -69,7 +72,7 @@ main()
     console.log(err.message);
 })
 
-
+app.use(cookieparser("code"));
 app.use(session(sessionoption));
 app.use(flash());
 app.use(passport.initialize());
@@ -85,20 +88,6 @@ app.use((req,res,next)=>{
     next();
 })
 
-
-
-
-app.use(cookieparser("code"));
-
-// app.get("/demouser",async(req,res)=>{
-//     let fakeuser= new user({
-//         email:"amir@gmail.com",
-//         username:"Amir Ali",
-//     })
-// register contains two parameters one is value and other is password
-//     let registereduser=await user.register(fakeuser,"helloworld");
-//     res.send(registereduser);
-// })
 
 app.use("/listings",listingrouter);
 app.use("/listings/:id/reviews",reviewrouter);

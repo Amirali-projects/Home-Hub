@@ -1,0 +1,68 @@
+
+<div class="row">
+  <div class="col-8 offset-2 mt-3">
+  <% layout("/layouts/boilerplate") %>
+
+    <h4>Create Your Personalized List</h4>
+    <form method="post" novalidate class="needs-validation" action="/listings" enctype="multipart/form-data" nonvalidate>
+      
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" placeholder="Choose a best title" name="listing[title]" class="form-control" required/>
+        <div class="valid-feedback">
+         Title Looks Good!
+        </div>
+      </div>
+                                                           
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea name="listing[description]" placeholder="Describe place  concisely" class="form-control" required></textarea>
+      <div class="invalid-feedback">
+        Please enter a short description. 
+       </div>
+    </div>
+   
+    
+    <div class="mb-3">
+      <label for="image" class="form-label">Upload Listing Image </label>
+      <input name="listing[image]" type="file" placeholder="Enter image Link/URL" class="form-control" required />
+      required
+    </div>
+
+    
+
+
+<div class="row">
+
+  <div class="mb-3 col-4 ">
+    <label for="price" class="form-label">Price</label>
+    <input  name="listing[price]" placeholder="1200 PKR"   class="form-control" required/>
+    <div class="invalid-feedback">
+       Price is required.
+     </div>
+  </div>
+ 
+  <div class="mb-3 col-md-8">
+    <label for="location" class="form-label">Location</label>
+    <input type="text" name="listing[location]" placeholder="Pasrur,Sialkot"  class="form-control" required/>
+    <div class="invalid-feedback">
+      Please enter a short description. 
+     </div>
+  </div>
+
+</div>
+
+    <div class="mb-3">
+      <label for="country" class="form-label">Country</label>
+      <input type="text" name="listing[country]" placeholder="Pakistan" class="form-control" required/>
+      <div class="invalid-feedback">
+        Please enter a valid country name. 
+       </div>
+    </div>
+    
+    <button class="btn btn-dark mb-3">Add</button>
+    
+</form>
+</div>
+</div>
+

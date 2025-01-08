@@ -1,0 +1,244 @@
+html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  height: 100%; 
+   
+}
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    color:bisque;
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  display:flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container{
+  flex:1;
+}
+/* .navbar{
+    height:6rem;
+    background-color: rgb(254, 254, 255);
+    
+
+} */
+
+
+
+/* General navbar styles */
+.navbar {
+  position: fixed; /* Keeps the navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensures it covers the full width */
+  z-index: 999; /* Places it above other elements */
+  background-color: #f8f9fa; /* Adjust to match your theme */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional for better design */
+}
+
+/* Collapsed menu styles */
+.collapse.navbar-collapse {
+  background-color: #f8f9fa; /* Matches navbar background */
+  position: absolute; /* Ensures it overlays content */
+  top: 60px; /* Adjust to match the navbar height */
+  left: 0;
+  width: 100%;
+  max-height: 100vh; /* Prevents overflow beyond screen height */
+  overflow-y: auto; /* Adds scroll for large menus */
+  padding: 10px 15px; /* Optional spacing for better UX */
+}
+
+/* Navbar links */
+.navbar-nav .nav-link {
+  display: block;
+  color: #333; /* Adjust to your theme */
+  padding: 10px 15px;
+  text-decoration: none;
+  border-bottom: 1px solid #ddd; /* Optional separator between items */
+}
+
+/* Hover effects for links */
+.navbar-nav .nav-link:hover {
+  background-color: #e9ecef; /* Optional hover effect */
+  color: #007bff; /* Optional link hover color */
+}
+
+/* For larger screens, reset collapse menu styles */
+@media (min-width: 768px) {
+  .collapse.navbar-collapse {
+    position: relative;
+    top: 0;
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .navbar-nav .nav-link {
+    display: inline-block;
+    border-bottom: none; /* Remove separator for desktop view */
+  }
+}
+
+
+
+
+
+
+
+.fa-compass{
+    color:#fe424d;
+    font-size: larger;
+    
+}
+
+.navcolor{
+    color:black !important;
+}
+
+.link-info a{
+   text-decoration:none;
+   color:#222222;
+}
+.link-info a:hover{
+   text-decoration:underline;
+ 
+}
+.social i{
+    font-size: larger;
+    margin:4px;
+}
+
+.fullinfo {
+  display: flex;
+  height: 6rem;
+  margin-bottom: 0;
+  bottom: 0;
+  left: 0; 
+  right: 0; 
+  width: 100%; 
+  background-color: #B0B0B0;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 18px 0;
+  box-sizing: border-box;
+/* position: sticky; */
+}
+
+
+
+
+.social,.link-info{
+    width:100%;
+}
+.company-name{
+    color:#222222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+      /* CARD Styling Now */
+      .listing-card{
+          border: none !important;
+          margin-bottom: 2rem !important;
+      }
+      .image{
+        border-radius: 14px !important;
+        object-fit: cover !important;
+        width:100% !important;
+      }
+      .card-body{
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .edit-click{
+        text-decoration: none;
+      }
+      .edit-click:hover{
+        font-size: large;
+        font-family: sans-serif;
+      }
+     .card-img-overlay{
+        opacity:0;
+     }
+     .card-img-overlay:hover{
+         opacity:0.6;
+        transition-duration: 0.1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+        transform-origin: 3%;
+       background-color:#FFFFFf;
+       color:black;
+       /* New Page */
+     }
+     .btn-dark{
+      background-color: #fe424d !important;
+      border:none;
+      width:8rem;
+
+     }
+     .btn-dark:hover{
+      background-color: #f01322 !important;
+     }
+
+
+     /*
+
+    .background-image {
+      position: fixed; /* Keeps the background fixed even while scrolling 
+      top: 0;
+      left: 0;
+      width: 100vw; /* Full width of the viewport 
+      height: 100vh; /* Full height of the viewport 
+      background-image: url('https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=1474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); Replace with your image URL 
+      background-size: cover; /* Ensures the image covers the entire container 
+      background-position: center; /* Centers the image 
+      background-repeat: no-repeat; /* Prevents the image from repeating 
+      z-index: -1; /* Sends the background behind other content 
+  } */
+
+  /* Edit Button Styling */
+  .edit-button{
+    background-color: #fe424d !important;
+      border:none;
+      width:8rem;
+  }
+  .edit-button:hover{
+    background-color: #f01322 !important;
+  }
+ 
+ .show-img{
+  width:100% !important;      
+  height: 30vh;       
+  object-fit: cover;   
+  border-radius: 8px;     
+  background-color: #def1e1;   
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  border-radius: 15px !important;
+ }
+  .one-btn{
+    display:flex;
+  }
+  .one-btn button{
+    margin-right: 20px;
+    padding-top: 4px;
+    padding-bottom:5px;
+    background-color: #fe424d;
+    width:100px;
+  }
+  .show-card{
+    padding-left: 0;
+    padding-right: 0px;
+   
+  }
+
+

@@ -1,0 +1,103 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3 ">
+    <div class="col-8 offset-3 ">
+    <h1><%= alisting.title %></h1>
+</div>
+   <div class="card col-6 offset-3 show-card listing-card">
+    <img src="<%= alisting.image.url %>" class="card-img-top show-img " alt="Home Image">
+    <br>
+    <div class="card-body">
+        <p class="card-text">Owner of this listing is <%= alisting.owner.username %></p>
+       <p class="card-text"><%= alisting.description %>  </p>
+       <p class="card-text"><%= alisting.price ? alisting.price.toLocaleString('en-PK') + ' PKR' : 'Price not available' %></p> 
+       <p class="card-text">  <%= alisting.location %></p> 
+       <p class="card-text">  <%= alisting.country %></p> 
+  
+    </div>
+   </div> 
+   <br>
+  <%  if(curruser && curruser._id.equals(alisting.owner._id)) { %>
+<div class="one-btn col-4 offset-3 mb-4">
+       <form method="get" action="/listings/<%= alisting.id %>/edit">
+        <button class="btn btn-dark" >Edit </button>
+    </form>
+    <form method="post" action="/listings/<%= alisting.id %>?_method=delete">
+        <button class="btn btn-dark">Delete</button>
+        </form>
+    </div>
+    <% } %>
+   <div class="col-10 offset-3">
+    <div class="col-8 offset-0">
+        <hr>
+    </div>
+    <h4>Leave a Review</h4>
+    <% if (curruser) { %>
+    <form method="post" novalidate action="/listings/<%= alisting.id %>/reviews" class="needs-validation">
+
+        <div class="col-8 offset-0">
+            <label for="rating" class="form-label">Rating</label>
+        <fieldset class="starability-slot mt-3">
+            <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+            <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+            <label for="first-rate1" title="Terrible">1 star</label>
+            <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+            <label for="first-rate2" title="Not good">2 stars</label>
+            <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+            <label for="first-rate3" title="Average">3 stars</label>
+            <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+            <label for="first-rate4" title="Very good">4 stars</label>
+            <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+            <label for="first-rate5" title="Amazing">5 stars</label>
+          </fieldset>
+</div>
+
+
+
+        <div class="col-8 offset-0">
+            <label for="comment">Comment</label>
+            <textarea name="review[comment]" cols="30" rows="7" id="comment" placeholder="Enter your comment here" class="form-control " required></textarea>
+            <div class="invalid-feedback">
+                Please enter a comment in above input form. 
+               </div>
+        </div>
+        <br>
+       <button class="btn btn-dark btn-sm">Submit</button>
+    </form>
+    <% } %>
+
+    <div class="col-8 offset-0">
+        <hr>
+    </div>
+    <h3>Reviews</h3>
+<div>
+    <div class="row">
+            <% for( let review of alisting.reviews ) { %>
+        <div class="card review-card cols-md-2 col-8 mb-3 ms-3" style="width: 18rem;">
+            <div class="card-body">
+                <div class="card-title"><b>@<%= review.author.username %></b></div>
+                <hr>
+              <p class="card-text"><%=review.comment%></p>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                <p class="starability-result" data-rating=<%= review.rating %>>
+                    Rated: 3 stars
+                  </p>
+            </h6>
+                <form  method="post" action="/listings/<%= alisting._id %>/reviews/<%=review._id %>?_method=Delete">    
+                    <button class="btn btn-dark btn-sm">Delete</button>
+                  </form>                            
+    </div>
+    </div>
+  <% } %>
+</div>
+</div>
+   </div>
+</div>
+
+
+<script src="http://maps.googleapis.com/maps/js?key=AIzaSyB5gZ5e_XhZS42p61I0hWTvLSNZ9znLNg0&callback=iniitMap&libraries=&v=weekly&callback=initMap&libraries=&v=weekly"
+defer>
+
+</script>
+
+
+ 

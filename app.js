@@ -8,8 +8,8 @@ const mongoose=require('mongoose');
 // const Mongo_url='mongodb://127.0.0.1:27017/wanderlust';
 const dbUrl=process.env.ATLASDB_URL;
 if (!dbUrl) {
-    throw new Error("MongoDB URL is not defined in the environment variables.");
-  }
+  throw new Error("MongoDB URL is not defined in the environment variables.");
+}
 let methodOverride=require("method-override");   
 const path=require("path");
 const ejsMate=require("ejs-mate");
@@ -34,9 +34,9 @@ const store=MongoStore.create({
     },
     touchAfter:24*3600,
 });
-store.on("error", (err) => {
-    console.error("Error in Mongo session store", err);
-  });
+store.on("error",()=>{
+    console.log("Error in Mongo session store",err);
+})
 
 
 
@@ -87,7 +87,6 @@ app.use((req,res,next)=>{
     res.locals.redirectuser=req.originalUrl;
     next();
 })
-
 
 app.use("/listings",listingrouter);
 app.use("/listings/:id/reviews",reviewrouter);
